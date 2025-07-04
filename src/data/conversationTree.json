@@ -1,0 +1,132 @@
+{
+  "mainMenu": {
+    "astronautReply": "Greetings, space explorer! How can I assist you today?",
+    "options": [
+      { "text": "Tell me about Interstellix", "nextId": "aboutInterstellix" },
+      { "text": "What's today's space history?", "nextId": "eventsToday" },
+      { "text": "Who are you?", "nextId": "whoAreYou" },
+      { "text": "Tell me a space fact!", "nextId": "spaceFact" },
+      { "text": "Tell me a space joke!", "nextId": "spaceJoke" }
+    ]
+  },
+  "aboutInterstellix": {
+    "astronautReply": "Interstellix is your portal to cosmic history! We bring you real astronomical events that happened on any given date throughout time. From launches to discoveries, it's all here.",
+    "options": [
+      { "text": "Back to Main Menu", "nextId": "backToMainMenu" }
+    ]
+  },
+  "eventsToday": {
+    "astronautReply": "Let me check the archives for today's date...",
+    "options": [
+      { "text": "Back to Main Menu", "nextId": "backToMainMenu" }
+    ]
+  },
+  "whoAreYou": {
+    "astronautReply": "I am Astro, your AI companion aboard the Interstellix. My purpose is to guide you through the vastness of space history.",
+    "options": [
+      { "text": "Back to Main Menu", "nextId": "backToMainMenu" }
+    ]
+  },
+  "spaceFact": {
+    "astronautReply": "Here's a cosmic fact for you:",
+    "options": [
+      { "text": "Tell me another fact", "nextId": "anotherSpaceFact" },
+      { "text": "Back to Main Menu", "nextId": "backToMainMenu" }
+    ]
+  },
+  "anotherSpaceFact": {
+    "astronautReply": "Alright, here's another one:",
+    "options": [
+      { "text": "Tell me another fact", "nextId": "anotherSpaceFact" },
+      { "text": "Back to Main Menu", "nextId": "backToMainMenu" }
+    ]
+  },
+  "allSpaceFacts": [
+    "Did you know that a day on Venus is longer than its year? It takes Venus 243 Earth days to rotate once on its axis, but only 225 Earth days to orbit the Sun!",
+    "The largest known structure in the universe is the Hercules-Corona Borealis Great Wall, a massive filament of galaxies stretching over 10 billion light-years across.",
+    "There are more stars in the universe than grains of sand on all the beaches on Earth. That's a lot of stars!",
+    "Neutron stars are so dense that a single teaspoon of their material would weigh about 6 billion tons.",
+    "The Sun is actually a yellow dwarf star, and it's just one of over 100 billion stars in our Milky Way galaxy."
+  ],
+  "spaceJoke": {
+    "astronautReply": "Ready for a laugh? Here's a space joke:",
+    "options": [
+      { "text": "Tell me another joke", "nextId": "anotherSpaceJoke" },
+      { "text": "Back to Main Menu", "nextId": "backToMainMenu" }
+    ]
+  },
+  "anotherSpaceJoke": {
+    "astronautReply": "Hehe, here's another one:",
+    "options": [
+      { "text": "Tell me another joke", "nextId": "anotherSpaceJoke" },
+      { "text": "Back to Main Menu", "nextId": "backToMainMenu" }
+    ]
+  },
+  "allSpaceJokes": [
+    "Why did the sun go to school? To get brighter!",
+    "What do you call a lazy kangaroo in space? Pouch potato!",
+    "How do you organize a space party? You planet!",
+    "What do you call a space alien who likes to garden? A terra-former!",
+    "Why did the astronaut break up with the astronomer? He needed space!"
+  ],
+  "systemRecoveredIntro": {
+    "astronautReply": [
+      "Phew… that was close. I lost comms for a while.",
+      "The oxygen stabilizer is back online — thanks to you.",
+      "You just saved this mission. I owe you one."
+    ],
+    "image": "/lovable-uploads/astronaut_relieved.png",
+    "options": [
+      { "text": "Continue", "nextId": "recoveryExplanation" }
+    ]
+  },
+  "recoveryExplanation": {
+    "astronautReply": [
+      "The system experienced a critical power surge, causing a temporary blackout in our navigation and life support. Your quick action in the terminal rerouted auxiliary power, preventing a full system collapse.",
+      "From now on, you can always access me by clicking the floating astronaut icon in the bottom-left corner of your screen. I'm here to assist you with any cosmic queries!"
+    ],
+    "options": [
+      { "text": "Understood, Commander!", "nextId": "postRecoveryOptions" }
+    ]
+  },
+  "postRecoveryOptions": {
+    "astronautReply": "What would you like to do next, Commander?",
+    "options": [
+      { "text": "📓 View recovered logbook", "nextId": "recoveredLogbook" },
+      { "text": "🌌 Continue exploring the cosmos", "nextId": "continueExploring" },
+      { "text": "👨‍🚀 Get mission briefing", "nextId": "missionBriefing" }
+    ]
+  },
+  "fullMainMenu": {
+    "astronautReply": "Welcome back, Commander! How can I assist you further?",
+    "options": [
+      { "text": "Tell me about Interstellix", "nextId": "aboutInterstellix" },
+      { "text": "What's today's space history?", "nextId": "eventsToday" },
+      { "text": "Who are you?", "nextId": "whoAreYou" },
+      { "text": "Tell me a space fact!", "nextId": "spaceFact" },
+      { "text": "Tell me a space joke!", "nextId": "spaceJoke" }
+    ]
+  },
+  "recoveredLogbook": {
+    "astronautReply": "The logbook contains records of all our past missions and discoveries. It's a treasure trove of information!",
+    "options": [
+      { "text": "Back to Main Menu", "nextId": "backToMainMenu" }
+    ]
+  },
+  "continueExploring": {
+    "astronautReply": "Excellent! The cosmos awaits. Feel free to use the date picker to explore any date in space history.",
+    "options": [
+      { "text": "Back to Main Menu", "nextId": "backToMainMenu" }
+    ]
+  },
+  "missionBriefing": {
+    "astronautReply": "Our current mission is to document and share every significant event in space history. Your role is crucial in navigating these archives.",
+    "options": [
+      { "text": "Back to Main Menu", "nextId": "backToMainMenu" }
+    ]
+  },
+  "backToMainMenu": {
+    "astronautReply": "Returning to main menu...",
+    "options": []
+  }
+}
