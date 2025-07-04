@@ -9,6 +9,8 @@ import ChatWindow from '@/components/ChatWindow';
 import SystemFailureTerminal from '@/components/SystemFailureTerminal';
 import AstronautChatButton from '@/components/AstronautChatButton';
 import AstronomyPictureOfTheDay from '@/components/AstronomyPictureOfTheDay'; // Import the new component
+import Quiz from '@/components/Quiz' // Import the Quiz component
+
 
 const Index = () => {
   const [showOpening, setShowOpening] = useState(true);
@@ -18,6 +20,8 @@ const Index = () => {
   const [isSystemRecovered, setIsSystemRecovered] = useState(false);
   const [showAstronautHint, setShowAstronautHint] = useState(false); // Controls visibility of the hint bubble
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isQuizOpen, setIsQuizOpen] = useState(false); // State for quiz open/close
+  
   const [hasInteractedWithAstronaut, setHasInteractedWithAstronaut] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('hasInteractedWithAstronaut') === 'true';
@@ -35,6 +39,11 @@ const Index = () => {
   
   // New states and refs for astronaut bubble messages
   const [astronautBubbleMessage, setAstronautBubbleMessage] = useState<string | null>(null);
+
+  // Handler to launch the quiz
+  const handleLaunchQuizClick = () => {
+    setIsQuizOpen(true);
+  };
   const hintCycleTimerRef = useRef<NodeJS.Timeout | null>(null);
   const idlePromptTimerRef = useRef<NodeJS.Timeout | null>(null);
   const initialHintDisplayTimerRef = useRef<NodeJS.Timeout | null>(null); // For the 1-minute "Wanna chat?" display
@@ -175,18 +184,19 @@ const Index = () => {
 
   // Effect for the 1-minute crash timer
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (!showOpening && !hasInitialCrashOccurred && !showSystemFailure) {
-      timer = setTimeout(() => {
-        setIsCrashScenarioActive(true);
-        setShowSystemFailure(true);
-      }, 60000);
-    }
+  let timer: NodeJS.Timeout;
+  if (!showOpening && !hasInitialCrashOccurred && !showSystemFailure) {
+    timer = setTimeout(() => {
+      setIsCrashScenarioActive(true);
+      setShowSystemFailure(true);
+    }, 60000);
+  }
 
-    return () => {
-      if (timer) clearTimeout(timer);
-    };
-  }, [showOpening, hasInitialCrashOccurred, showSystemFailure]);
+  return () => {
+    if (timer) clearTimeout(timer);
+  };
+}, [showOpening, hasInitialCrashOccurred, showSystemFailure]);
+
 
   const handleOpeningComplete = () => {
     setShowOpening(false);
@@ -273,6 +283,8 @@ const Index = () => {
           onLaunchDiagnosticsClick={handleLaunchDiagnosticsClick} 
           isMuted={isMuted} // Pass mute state
           onToggleMute={handleToggleMute} // Pass toggle function
+          onLaunchQuizClick={handleLaunchQuizClick}
+         
         />
 
         <main className="relative z-10">
@@ -301,13 +313,23 @@ const Index = () => {
         <footer className="relative z-10 bg-black/60 backdrop-blur-md border-t border-cyan-500/20 py-8">
           <div className="container mx-auto px-4 text-center">
             <p className="text-white/70">
-              © 2024 Interstellix. Exploring the cosmos, one date at a time.
+              © {new Date().getFullYear()} Interstellix. All rights reserved.
             </p>
+            <audio ref={humAudioRef} src="/sounds/hum.mp3" preload="auto" />
           </div>
         </footer>
-      </div>
 
-      <audio ref={humAudioRef} src="/sounds/hum.mp3" preload="auto" />
+        {/* Quiz component */}
+        <Quiz 
+          isOpen={isQuizOpen} // Show quiz only when quiz is open
+          onClose={() => setIsQuizOpen(false)} // Close quiz when quiz closes
+          onUserInteraction={handleUserInteraction} // Pass interaction handler to reset idle prompt
+        />
+        
+
+
+
+      </div>
     </div>
   );
 };
