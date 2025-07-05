@@ -31,44 +31,52 @@ const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/15 backdrop-blur-xl border-b border-cyan-500/10 py-1 md:py-3 lg:py-3">
-      <div className="container mx-auto px-4 flex items-center justify-between md:flex-row md:justify-between">
-        {/* Mobile Left: Mute Button */}
-        <div className="md:hidden">
-          <button
-            onClick={onToggleMute}
-            className="group bg-transparent border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 rounded-full p-2 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-cyan-500/30"
-            aria-label={
-              isMuted ? "Unmute background sound" : "Mute background sound"
-            }
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        {/* Mobile View (hidden on md and up) */}
+        <div className="md:hidden flex items-center justify-between w-full">
+          {/* Mobile Left: Logo + Mute Button */}
+          <div className="flex items-center space-x-2">
+            <img
+              src="/lovable-uploads/image copy.png"
+              alt="Interstellix Logo"
+              className="h-8 w-8 object-contain flex-shrink-0"
+            />
+            <button
+              onClick={onToggleMute}
+              className="group bg-transparent border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 rounded-full p-2 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-cyan-500/30"
+              aria-label={
+                isMuted ? "Unmute background sound" : "Mute background sound"
+              }
+            >
+              {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+            </button>
+          </div>
+
+          {/* Mobile Centered: Search Bar */}
+          <form
+            onSubmit={handleSearchSubmit}
+            className="flex items-center bg-black/40 rounded-full px-2 py-1 border border-cyan-500/20 flex-grow mx-2 max-w-[calc(100%-160px)]" // Adjusted max-width
           >
-            {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-          </button>
-        </div>
+            <input
+              type="text"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              placeholder="Search events..."
+              className="bg-transparent border-none text-white placeholder-cyan-400 outline-none px-2 py-1 flex-grow min-w-0"
+            />
+            <button type="submit" aria-label="Search">
+              <SearchIcon size={18} className="text-cyan-400" />
+            </button>
+          </form>
 
-        {/* Mobile Centered: Search Bar */}
-        <form
-          onSubmit={handleSearchSubmit}
-          className="flex items-center bg-black/40 rounded-full px-2 py-1 border border-cyan-500/20 w-full max-w-xs mx-auto md:hidden"
-        >
-          <input
-            type="text"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Search events..."
-            className="bg-transparent border-none text-white placeholder-cyan-400 outline-none px-2 py-1 flex-grow min-w-0"
-          />
-          <button type="submit" aria-label="Search">
-            <SearchIcon size={18} className="text-cyan-400" />
-          </button>
-        </form>
-
-        {/* Mobile Right: Hamburger Menu */}
-        <div className="md:hidden">
-          <MobileNavMenu
-            onLaunchDiagnosticsClick={onLaunchDiagnosticsClick}
-            onLaunchQuizClick={onLaunchQuizClick}
-            onToggleFunFacts={onToggleFunFacts}
-          />
+          {/* Mobile Right: Hamburger Menu */}
+          <div className="flex-shrink-0">
+            <MobileNavMenu
+              onLaunchDiagnosticsClick={onLaunchDiagnosticsClick}
+              onLaunchQuizClick={onLaunchQuizClick}
+              onToggleFunFacts={onToggleFunFacts}
+            />
+          </div>
         </div>
 
         {/* Desktop Left Group: Logo + Search Bar (hidden on mobile) */}
