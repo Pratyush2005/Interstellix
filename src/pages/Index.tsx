@@ -189,7 +189,7 @@ const Index = () => {
     timer = setTimeout(() => {
       setIsCrashScenarioActive(true);
       setShowSystemFailure(true);
-    }, 60000);
+    }, 300000);
   }
 
   return () => {
